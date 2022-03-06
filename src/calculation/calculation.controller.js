@@ -17,5 +17,5 @@ export default async function createOne(req, res) {
     const output = eval(input);
     const doc = await Calculation.create({ ipAddress, input, output });
     const allRecords = await Calculation.find({ ipAddress }).sort({ created: -1 }).lean().exec();
-    res.status(201).send({ data: allRecords, currentRecord: doc });
+    res.status(201).send({ data: allRecords, currentRecord: doc, count: allRecords.length });
 }
