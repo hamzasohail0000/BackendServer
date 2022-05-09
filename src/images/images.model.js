@@ -2,12 +2,9 @@ import mongoose from 'mongoose';
 
 const imagesSchema = new mongoose.Schema(
   {
-    name: String,
-    desc: String,
-    img: {
-      data: Buffer,
-      contentType: String,
-    },
+    fileName: String,
+    fileSize: Number,
+    createdBy: String,
   },
   { timestamps: true }
 );

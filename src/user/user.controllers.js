@@ -242,7 +242,7 @@ export const signin = async (req, res) => {
       return res.status(401).send(invalid);
     }
     const token = newToken(user);
-    return res.status(200).send({ token });
+    return res.status(200).send({ token, user });
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);
