@@ -202,13 +202,6 @@ export const signup = async (req, res) => {
   if (!req.body.email || !req.body.password || !req.body.name) {
     return res.status(400).send({ message: 'need email, password and name' });
   }
-
-  if (req.body.password.length < 8) {
-    return res
-      .status(400)
-      .send({ message: 'Password must contain atleast 8 characters' });
-  }
-
   const userCheck = await User.findOne({ email: req.body.email })
     .select('email')
     .exec();
@@ -241,11 +234,6 @@ export const signin = async (req, res) => {
     })
       .select('email password')
       .exec();
-    if (req.body.password.length < 8) {
-      return res
-        .status(401)
-        .send({ message: 'Password length must be greater than 8' });
-    }
     if (!user) {
       return res.status(401).send(invalid);
     }
